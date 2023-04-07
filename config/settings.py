@@ -38,6 +38,7 @@ INSTALLED_APPS = [
     # My Apps
     'accounts.apps.AccountsConfig',
     # Trirdpary Apps and packages
+    'rest_framework',
 
 ]
 
