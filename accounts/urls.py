@@ -7,6 +7,7 @@ from accounts.views import manage_accounts
 
 router = DefaultRouter()
 router.register(r'users', manage_accounts.AccountsView)
+router.register(r'profiles', manage_accounts.ProfileView)
 
 app_name = 'accounts'
 

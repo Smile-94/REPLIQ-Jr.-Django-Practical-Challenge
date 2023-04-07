@@ -78,6 +78,7 @@ class Profile(models.Model):
     country = models.CharField(max_length=50)
     contact_no = models.CharField(max_length=15)
     description = models.TextField( blank=True)
+    is_active = models.BooleanField(default=True)
     
     
     def __str__(self):

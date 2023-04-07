@@ -5,7 +5,7 @@ from accounts.models import User
 from accounts.models import Profile 
 
 
-
+# User list and details seralizers
 class UserListSerializers(serializers.ModelSerializer):
 
     class Meta:
@@ -13,6 +13,7 @@ class UserListSerializers(serializers.ModelSerializer):
         fields = ('email','is_staff','is_clients')
 
 
+# User Creation and Update Serializer
 class SignUpUserSerializer(serializers.ModelSerializer):
     password = serializers.CharField(write_only=True)
     confirm_password = serializers.CharField(write_only=True)
@@ -38,3 +39,35 @@ class SignUpUserSerializer(serializers.ModelSerializer):
         user.set_password(password)
         user.save()
         return user
+
+# Companty Profile List Seralizers
+
+# Serializer to view the user email
+class ProfileUserSerializers(serializers.ModelSerializer):
+
+    class Meta:
+        model = User
+        fields = ('email',)
+
+class ProfileListSerializer(serializers.ModelSerializer):
+
+    class Meta:
+        model = Profile
+        fields = ('user','company_name','company_type','contact_no')
+
+class AddViewProfileSerializers(serializers.ModelSerializer):
+
+    class Meta:
+        model = Profile
+        fields = '__all__'
+    
+    def to_representation(self, instance):
+        data = super().to_representation(instance)
+        
+        data['user']=ProfileUserSerializers(instance=instance.user).data
+        
+        return data
+
+
+
+
