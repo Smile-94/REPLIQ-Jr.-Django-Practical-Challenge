@@ -6,6 +6,7 @@ from django.urls import include
 from employee.views import manage_designation
 from employee.views import manage_employee
 
+# Router for the employee and designation view
 router = DefaultRouter()
 router.register(r'designations', manage_designation.DesignationView)
 router.register(r'employees', manage_employee.EmployeeInfoView)

@@ -18,7 +18,7 @@ DEPARTMENT_OPT = (
     ('marketing', 'Marketing'),
     ('IT', 'Information Technology')
 )
-
+# To add dynamitically add designation
 class DesignationInfo(models.Model):
     designation_of = models.ForeignKey(User, related_name='designation_of', on_delete=models.CASCADE, null=True)
     designation = models.CharField(max_length=50, unique=True)
@@ -52,4 +52,4 @@ class EmployeeInfo(models.Model):
             self.save()
         
     def __str__(self):
-        return str(self.info_of)
+        return str(self.full_name)

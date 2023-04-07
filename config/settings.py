@@ -41,6 +41,8 @@ INSTALLED_APPS = [
     'assests.apps.AssestsConfig',
     # Trirdpary Apps and packages
     'rest_framework',
+    'rest_framework_simplejwt',
+    'drf_yasg',
 
 ]
 
@@ -53,7 +55,21 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
+#Custom User Backend
+AUTHENTICATION_BACKENDS = [
+    'django.contrib.auth.backends.ModelBackend',
+    'accounts.backends.CustomUserModelBackend',
+]
 
+# Sample JWT Settings
+REST_FRAMEWORK = {
+    
+    'DEFAULT_AUTHENTICATION_CLASSES': (
+      
+        'rest_framework_simplejwt.authentication.JWTAuthentication',
+    )
+   
+}
 ROOT_URLCONF = 'config.urls'
 
 TEMPLATES = [

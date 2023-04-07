@@ -14,6 +14,10 @@ class DesignationView(viewsets.ModelViewSet):
     serializer_class = DesignationSerializers
     lookup_field = 'id'
 
+    def get_queryset(self):
+        self.queryset = self.queryset.filter(designation_of=self.request.user)
+        return super().get_queryset()
+
     def destroy(self, request, *args, **kwargs):
         try:
             instance = self.get_object()

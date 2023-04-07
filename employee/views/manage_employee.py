@@ -21,6 +21,10 @@ class EmployeeInfoView(viewsets.ModelViewSet):
     default_serializer_class = EmployeeInfoListSerializers
     lookup_field = 'id'
 
+    def get_queryset(self):
+        self.queryset = self.queryset.filter(employee_of=self.request.user)
+        return super().get_queryset()
+
     def get_serializer_class(self):
         return self.serializer_classes.get(self.action, self.default_serializer_class)
 
