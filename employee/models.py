@@ -19,14 +19,12 @@ DEPARTMENT_OPT = (
     ('IT', 'Information Technology')
 )
 
-
 class DesignationInfo(models.Model):
     designation_of = models.ForeignKey(User, related_name='designation_of', on_delete=models.CASCADE, null=True)
     designation = models.CharField(max_length=50, unique=True)
     department = models.CharField(max_length=20, choices=DEPARTMENT_OPT)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
-    description = models.TextField(blank=True)
     is_active = models.BooleanField(default=True)
 
     def __str__(self):
@@ -34,6 +32,7 @@ class DesignationInfo(models.Model):
 
 class EmployeeInfo(models.Model):
     employee_of = models.ForeignKey(User, related_name='employee_company', on_delete=models.CASCADE)
+    full_name = models.CharField(max_length=50, null=True)
     position = models.ForeignKey(DesignationInfo, on_delete=models.SET_NULL, blank=True, null=True)
     joining_date = models.DateField(auto_now_add=True)
     employee_id = models.CharField(max_length=20, unique=True, blank=True, null=True)

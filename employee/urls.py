@@ -4,9 +4,11 @@ from django.urls import include
 
 # Views
 from employee.views import manage_designation
+from employee.views import manage_employee
 
 router = DefaultRouter()
 router.register(r'designations', manage_designation.DesignationView)
+router.register(r'employees', manage_employee.EmployeeInfoView)
 
 app_name = 'employee'
 
