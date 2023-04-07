@@ -55,7 +55,7 @@ class ProfileListSerializer(serializers.ModelSerializer):
         model = Profile
         fields = ('user','company_name','company_type','contact_no')
 
-class AddViewProfileSerializers(serializers.ModelSerializer):
+class UpdateViewProfileSerializers(serializers.ModelSerializer):
 
     class Meta:
         model = Profile

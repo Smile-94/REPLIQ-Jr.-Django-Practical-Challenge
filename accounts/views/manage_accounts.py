@@ -12,7 +12,7 @@ from accounts.serializers import SignUpUserSerializer
 
 # Serializers for profile create, update, view, delete
 from accounts.serializers import ProfileListSerializer
-from accounts.serializers import AddViewProfileSerializers
+from accounts.serializers import UpdateViewProfileSerializers
 
 class AccountsView(viewsets.ModelViewSet):
     queryset = User.objects.filter(is_active=True)
@@ -40,9 +40,9 @@ class AccountsView(viewsets.ModelViewSet):
 class ProfileView(viewsets.ModelViewSet):
     queryset = Profile.objects.filter(is_active=True)
     serializer_classes = {
-        'create' : AddViewProfileSerializers,
-        'update' : AddViewProfileSerializers,
-        'retrieve' : AddViewProfileSerializers
+        'create' : UpdateViewProfileSerializers,
+        'update' : UpdateViewProfileSerializers,
+        'retrieve' : UpdateViewProfileSerializers
     }
     default_serializer_class = ProfileListSerializer
     lookup_field = 'id'

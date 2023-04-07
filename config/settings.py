@@ -37,6 +37,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     # My Apps
     'accounts.apps.AccountsConfig',
+    'employee.apps.EmployeeConfig',
+    'assests.apps.AssestsConfig',
     # Trirdpary Apps and packages
     'rest_framework',
 
